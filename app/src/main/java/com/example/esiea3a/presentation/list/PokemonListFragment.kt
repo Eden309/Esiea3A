@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,7 +48,7 @@ class PokemonListFragment : Fragment() {
 
 
         recyclerView.apply {
-            layoutManager = this@PokemonListFragment.layoutManager
+            layoutManager = LinearLayoutManager(context)
             adapter = this@PokemonListFragment.adapter
         }
 
@@ -77,7 +78,9 @@ class PokemonListFragment : Fragment() {
                 }
             })
         }
-    private fun OnClickedPokemon(pokemon: Pokemon) {
-        findNavController().navigate(navigateToPokemonDetailFragment)
+    private fun OnClickedPokemon(id :Int) {
+        findNavController().navigate(navigateToPokemonDetailFragment, bundleOf(
+                "pokemonId" to (id+1)
+        ))
     }
 }
