@@ -30,8 +30,6 @@ class PokemonListFragment : Fragment() {
 
     private val adapter = PokemonAdapter(listOf(), ::OnClickedPokemon)
 
-    private val layoutManager = LinearLayoutManager(context)
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,19 +43,10 @@ class PokemonListFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.pokemon_recyclerview)
 
-
-
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = this@PokemonListFragment.adapter
         }
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val pokeApi: PokeApi = retrofit.create(PokeApi::class.java)
 
             Singletons.pokeApi.getPokemonList().enqueue(object : Callback<PokemonListResponse> {
                 override fun onFailure(call: Call<PokemonListResponse>, t: Throwable) {
@@ -71,13 +60,18 @@ class PokemonListFragment : Fragment() {
                     if (response.isSuccessful && response.body() != null) {
                         val pokemonResponse: PokemonListResponse? = response.body()!!
                         if (pokemonResponse != null) {
-                            adapter.updateList(pokemonResponse.results)
+                            showList(pokemonResponse.results)
                         }
                     }
 
                 }
             })
         }
+
+    private fun showList(pokemonListResponse: List<Pokemon>) {
+        adapter.updateList(pokemonListResponse)
+    }
+
     private fun OnClickedPokemon(id :Int) {
         findNavController().navigate(navigateToPokemonDetailFragment, bundleOf(
                 "pokemonId" to (id+1)
