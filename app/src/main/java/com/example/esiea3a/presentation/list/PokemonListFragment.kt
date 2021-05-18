@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esiea3a.R
-import com.example.esiea3a.presentation.PokemonResponse
+import com.example.esiea3a.R.id.navigateToPokemonDetailFragment
+import com.example.esiea3a.presentation.Singletons
+import com.example.esiea3a.presentation.api.PokemonListResponse
 import com.example.esiea3a.presentation.api.PokeApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -56,17 +58,17 @@ class PokemonListFragment : Fragment() {
 
         val pokeApi: PokeApi = retrofit.create(PokeApi::class.java)
 
-            pokeApi.getPokemonList().enqueue(object : Callback<PokemonResponse> {
-                override fun onFailure(call: Call<PokemonResponse>, t: Throwable) {
+            Singletons.pokeApi.getPokemonList().enqueue(object : Callback<PokemonListResponse> {
+                override fun onFailure(call: Call<PokemonListResponse>, t: Throwable) {
                     //TODO("Not yet implemented")
                 }
 
                 override fun onResponse(
-                    call: Call<PokemonResponse>,
-                    response: Response<PokemonResponse>
+                    call: Call<PokemonListResponse>,
+                    response: Response<PokemonListResponse>
                 ) {
                     if (response.isSuccessful && response.body() != null) {
-                        val pokemonResponse: PokemonResponse? = response.body()!!
+                        val pokemonResponse: PokemonListResponse? = response.body()!!
                         if (pokemonResponse != null) {
                             adapter.updateList(pokemonResponse.results)
                         }
@@ -76,6 +78,6 @@ class PokemonListFragment : Fragment() {
             })
         }
     private fun OnClickedPokemon(pokemon: Pokemon) {
-        findNavController().navigate(R.id.navigateToPokemonDetailFragment)
+        findNavController().navigate(navigateToPokemonDetailFragment)
     }
 }
