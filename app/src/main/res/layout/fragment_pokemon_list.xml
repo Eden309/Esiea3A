@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".presentation.list.PokemonListFragment">
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="317dp"
+        android:layout_height="51dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search Pokemon Here"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+        app:layout_constraintStart_toStartOf="parent">
+    </SearchView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pokemon_recyclerview"
         android:layout_width="0dp"
@@ -16,15 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="317dp"
-        android:layout_height="51dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search Pokemon Here"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
-        app:layout_constraintStart_toStartOf="parent">
-    </SearchView>
 
     <Button
         android:id="@+id/button"
