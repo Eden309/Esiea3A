@@ -25,14 +25,14 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             //set title for alert dialog
-            builder.setTitle("Title")
+            builder.setTitle("Vous avez cliqué sur le bouton?")
             //set message for alert dialog
-            builder.setMessage("Message")
+            builder.setMessage("Le bouton n'est pas implémenté.")
             builder.setIcon(android.R.drawable.ic_dialog_alert)
 
 
             //performing cancel action
-            builder.setNeutralButton("OKay"){dialogInterface , which ->
+            builder.setNeutralButton("OK"){dialogInterface , which ->
 
             }
             //performing negative action

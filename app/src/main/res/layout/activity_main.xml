@@ -19,6 +19,14 @@
             app:popupTheme="@style/Theme.Esiea3A.PopupOverlay" />
 
 
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search Pokemon Here"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
@@ -30,14 +38,6 @@
             app:layout_constraintBottom_toBottomOf="@id/searchView"
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="OnClick" />
-
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search Pokemon Here"
-            app:layout_constraintStart_toStartOf="parent" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
