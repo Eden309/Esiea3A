@@ -1,12 +1,17 @@
 package com.example.esiea3a
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +20,29 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
+        val button = findViewById<Button>(R.id.button)
+
+        button.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            //set title for alert dialog
+            builder.setTitle("Title")
+            //set message for alert dialog
+            builder.setMessage("Message")
+            builder.setIcon(android.R.drawable.ic_dialog_alert)
+
+
+            //performing cancel action
+            builder.setNeutralButton("OKay"){dialogInterface , which ->
+
+            }
+            //performing negative action
+
+            // Create the AlertDialog
+            val alertDialog: AlertDialog = builder.create()
+            // Set other dialog properties
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+        }
 
     }
 
@@ -23,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will

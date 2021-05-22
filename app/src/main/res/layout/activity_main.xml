@@ -18,9 +18,33 @@
             android:background="#3F51B5"
             app:popupTheme="@style/Theme.Esiea3A.PopupOverlay" />
 
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:text="@string/button"
+            app:layout_constraintBottom_toBottomOf="@id/searchView"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="OnClick" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search Pokemon Here"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />
+
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
